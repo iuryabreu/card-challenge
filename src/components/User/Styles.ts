@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 150px;
+  width: 110px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -14,20 +14,18 @@ export const Container = styled.div`
 export const UserContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   cursor: default;
 
 `;
 
 export const UserName = styled.div`
-  text-align: right;
+  text-align: center;
   font-size: 12px;
-  max-height: 20px;
   max-height: 40px;
   height: auto;
-  max-width: 75px;
-  min-width: 100px;
+  min-width: 60px;
 `;
 
 export const Avatar = styled.img`
