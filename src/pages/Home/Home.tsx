@@ -1,6 +1,7 @@
 import { useState, MouseEvent } from "react";
-import { useHistory } from "react-router-dom";
-import { login } from "../../api/User";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setUserState } from "store/ducks/user";
 import Button from "../../components/Button/Button";
 import { Container, ErrorMsg, Form, Input } from "./Styles";
 
@@ -8,7 +9,8 @@ export default function Home() {
   const [userName, setUserName] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const history = useHistory();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleLogin(event: MouseEvent) {
     event.preventDefault();
@@ -17,17 +19,14 @@ export default function Home() {
       setErrorMsg("Por favor, insira seu nome");
       return;
     }
-
-    login(userName);
-
+    dispatch(setUserState(userName));
     setUserName("");
-    history.push("/cards");
+    navigate("/cards");
   }
 
   return (
     <Container>
       <Form>
-        
         <Input
           type="text"
           placeholder="Insira seu nome"
@@ -35,7 +34,7 @@ export default function Home() {
           onChange={(e) => {
             setUserName(e.target.value);
             setErrorMsg("");
-            setError(false)
+            setError(false);
           }}
           error={error}
         />

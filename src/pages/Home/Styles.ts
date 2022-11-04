@@ -23,7 +23,6 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input<{ error: boolean }>`
-  width: 60%;
   box-sizing: border-box;
   text-align: center;
   padding: 15px 20px;
@@ -35,6 +34,7 @@ export const Input = styled.input<{ error: boolean }>`
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
   position: relative;
+  width: 25vw;
 
   :focus {
     /* background: #f0ff; */
@@ -53,4 +53,5 @@ export const ErrorMsg = styled.span`
   font-weight: 600;
   color: red;
   min-height: 15px;
+  cursor: default;
 `;
