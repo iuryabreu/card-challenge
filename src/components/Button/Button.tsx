@@ -4,13 +4,13 @@ import { StyledButton } from "./Styles";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   secondary?: boolean;
-  danger?: boolean;
+  single?: boolean;
 };
 
 export default function Button({
-  danger = false,
   secondary = false,
+  single = false,
   ...props
 }: ButtonProps) {
-  return <StyledButton danger={danger} secondary={secondary} {...props} />;
+  return <StyledButton single={single} secondary={secondary} {...props} />;
 }

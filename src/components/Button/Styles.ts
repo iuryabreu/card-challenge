@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button<{
-  danger: boolean;
   secondary: boolean;
+  single: boolean;
 }>`
   display: flex;
   justify-content: center;
@@ -23,7 +23,9 @@ export const StyledButton = styled.button<{
   text-align: center;
   text-decoration: none #000 solid;
   text-decoration-thickness: auto;
-  width: 20vw;
+  width: ${(pros) => (pros.single ? "80vw" : "30%")};
+  max-width: 330px;
+
   height: auto;
   padding: 0.75rem 3rem;
   margin-top: 8px;
@@ -51,9 +53,5 @@ export const StyledButton = styled.button<{
   :hover:after {
     bottom: 2px;
     left: 2px;
-  }
-
-  @media (max-width: 600px) {
-    width: 40vw;
   }
 `;

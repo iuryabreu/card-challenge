@@ -39,7 +39,7 @@ export default function Home() {
           error={error}
         />
         <ErrorMsg>{errorMsg}</ErrorMsg>
-        <Button onClick={(e: MouseEvent) => handleLogin(e)}>Ver Cartas</Button>
+        <Button single onClick={(e: MouseEvent) => handleLogin(e)}>Ver Cartas</Button>
       </Form>
     </Container>
   );
