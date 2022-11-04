@@ -10,8 +10,9 @@ export const CardContainer = styled.div`
   padding: 8px;
   width: 110px;
   height: 200px;
-  border: 2px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 8px;
+  background-color: #fff;
 
   td {
     padding: 0 1px;
