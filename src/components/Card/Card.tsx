@@ -1,4 +1,3 @@
-import React from "react";
 import { Animal } from "../../models/Animal";
 import { RandomPointsGenerator } from "../../utils/RandomPointsGenerator";
 import {
@@ -16,7 +15,7 @@ export default function Card({ animal }: CardProps) {
     <Container>
       <div>{animal.name}</div>
       <ImgContainer>
-        <Img src={animal.image_link} alt={`A ${animal.name}`} />
+        <Img loading="lazy" src={animal.image_link} alt={`A ${animal.name}`} />
       </ImgContainer>
       <table>
         <thead>
