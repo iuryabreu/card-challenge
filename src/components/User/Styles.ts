@@ -16,9 +16,12 @@ export const UserContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
+  cursor: default;
+
 `;
 
 export const UserName = styled.div`
+  text-align: right;
   font-size: 12px;
   max-height: 20px;
   max-height: 40px;
@@ -34,7 +37,6 @@ export const Avatar = styled.img`
 
 export const LogoutBtn = styled.div`
   font-size: 12px;
-  margin-right: 5px;
   font-weight: 600;
   :hover {
     cursor: pointer;
