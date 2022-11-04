@@ -34,7 +34,12 @@ export const Input = styled.input<{ error: boolean }>`
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
   position: relative;
-  width: 25vw;
+  width: 30vw;
+  max-width: 410px;
+  min-width: 280px;
+  @media (max-width: 600px) {
+    width: 90vw;
+  }
 
   :focus {
     /* background: #f0ff; */

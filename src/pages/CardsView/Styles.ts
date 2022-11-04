@@ -29,15 +29,19 @@ export const ButtonsContainer = styled.div`
   margin-top: 5px;
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   padding: 10px;
 
   @media (max-width: 600px) {
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     margin-top: 5px;
-    background-color: rgb(0, 71, 186);
+    background-color: rgb(0, 105, 240);
     overflow: hidden;
+    width: 100vw;
+    margin: 0;
   }
 `;
