@@ -1,5 +1,8 @@
 import { Dispatch } from "redux";
-import { getMultipleRandomAnimais, getRandomAnimal } from "../../api/ZooAnimals";
+import {
+  getMultipleRandomAnimais,
+  getRandomAnimal,
+} from "../../api/ZooAnimals";
 import { Animal } from "../../models/Animal";
 
 const Types = {
@@ -9,6 +12,7 @@ const Types = {
   GET_ANIMALS: "animal/GET_ANIMALS",
   GET_ANIMALS_SUCCESS: "animal/GET_ANIMALS_SUCCESS",
   GET_ANIMALS_ERROR: "animal/GET_ANIMALS_ERROR",
+  SHUFFLE_ANIMALS: "animal/SHUFFLE_ANIMALS",
 };
 
 export type AnimalState = {
@@ -41,6 +45,17 @@ const reducer = (state = initialState, action: any) => {
       };
     case Types.GET_ANIMAL_ERROR:
       return { ...state, isLoading: false, error: action.payload.error };
+
+      case Types.SHUFFLE_ANIMALS:
+        {
+          const displayedAnimals = state.animals.sort(
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            (_, __) => 0.5 - Math.random()
+          );
+          return {
+            ...state, animals: displayedAnimals
+          }
+        }
     default:
       return state;
   }
@@ -60,8 +75,6 @@ const getAnimalsError = (error) => ({
   payload: { error },
 });
 
-
-
 const getAnimal = () => ({
   type: Types.GET_ANIMAL,
 });
@@ -75,6 +88,10 @@ const getAnimalError = (error) => ({
   type: Types.GET_ANIMAL_ERROR,
   payload: { error },
 });
+
+export const shuffleAnimals = ()  => ({
+  type: Types.SHUFFLE_ANIMALS
+})
 
 export const asyncGetAnimals = () => {
   return async (dispatch: Dispatch) => {
