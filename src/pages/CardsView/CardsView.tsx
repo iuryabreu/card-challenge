@@ -1,60 +1,74 @@
-import { useState, useMemo, useEffect } from "react";
+import { Animal } from "models/Animal";
+import { UserType } from "models/User";
+import { useEffect, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
-  getMultipleRandomAnimais,
-  getRandomAnimal,
-} from "../../api/ZooAnimals";
+  AnimalState,
+  asyncGetAnimal,
+  asyncGetAnimals,
+  shuffleAnimals,
+} from "store/ducks/animal";
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
-import { Animal } from "../../models/Animal";
-import { CardsContainer as Container, ButtonsContainer } from "./Styles";
+
+import {
+  CardsContainer as Container,
+  ButtonsContainer,
+  CardContent as Content,
+} from "./Styles";
 
 export default function CardsView() {
-  const [animals, setAnimals] = useState<Animal[]>([]);
-
-  async function fetchMultipleAnimals() {
-    const response = await getMultipleRandomAnimais(5);
-
-    setAnimals(response);
-  }
+  const dispatch: any = useDispatch();
+  const navigate = useNavigate();
+  const [displayedAnimals, setDisplayedAnimals] = useState<Animal[]>([]);
+  const ref = useRef<HTMLDivElement>(null);
+  const animal = useSelector((state: { animal: AnimalState }) => state.animal);
+  const user = useSelector((state: { user: UserType }) => state.user);
 
   useEffect(() => {
-    fetchMultipleAnimals();
+    dispatch(asyncGetAnimals());
   }, []);
 
-  function randomizeCards() {
-    const randomizedCards = animals.sort((a, b) => 0.5 - Math.random());
+  useEffect(() => {
+    if (animal.animals?.length) {
+      setDisplayedAnimals(animal.animals);
+    }
+  }, [animal.animals]);
 
-    setAnimals(randomizedCards);
-
-    console.log(randomizedCards)
-  }
+  useEffect(() => {
+    if (!user.userName) {
+      navigate("/");
+    }
+  }, []);
 
   async function buyCard() {
-    if (animals.length < 8) {
-      var response = await getRandomAnimal();
-      console.log("new Animal", response);
-
-      setAnimals([...animals, response]);
+    if (animal.animals?.length < 8) {
+      dispatch(asyncGetAnimal());
     } else alert("Voce só pode ter 8 cartas");
+
+    window.scrollTo(0, document.body.scrollHeight);
   }
 
-  console.log(animals);
-
   return (
-    <Container>
+    <Container ref={ref}>
       <ButtonsContainer>
-        <Button onClick={randomizeCards}>Embaralhar</Button>
-        <Button onClick={buyCard} secondary>
+        <Button onClick={() => dispatch(shuffleAnimals())} secondary>
+          Embaralhar
+        </Button>
+        <Button disabled={animal.isLoading} onClick={buyCard}>
           Comprar
         </Button>
       </ButtonsContainer>
-      {animals.map((animal) => {
-        return (
-          <div key={animal.id}>
-            <Card animal={animal} />
-          </div>
-        );
-      })}
+      <Content>
+        {displayedAnimals.map((animal) => {
+          return (
+            <div key={animal.id}>
+              <Card animal={animal} />
+            </div>
+          );
+        })}
+      </Content>
     </Container>
   );
 }
