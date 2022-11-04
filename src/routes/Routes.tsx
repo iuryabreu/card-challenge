@@ -8,10 +8,8 @@ export default function Router() {
     <BrowserRouter>
       <MainLayout>
         <Routes>
-          {/* <AuthContextProvider> */}
           <Route path="/cards" element={<CardsView />} />
           <Route path="/" element={<Home />} />
-          {/* </AuthContextProvider> */}
         </Routes>
       </MainLayout>
     </BrowserRouter>
