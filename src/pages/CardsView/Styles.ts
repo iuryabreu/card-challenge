@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const CardsContainer = styled.div`
   width: 90vw;
-
   margin: auto;
   margin-top: 10px;
   overflow: hidden;

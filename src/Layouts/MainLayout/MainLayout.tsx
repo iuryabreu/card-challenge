@@ -9,7 +9,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-
 export default function MainLayout(props: Props) {
   const user = useSelector((state: { user: UserType }) => state.user);
   const path = window.location;

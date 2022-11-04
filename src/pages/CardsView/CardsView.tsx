@@ -29,9 +29,6 @@ export default function CardsView() {
   const animal = useSelector((state: { animal: AnimalState }) => state.animal);
   const user = useSelector((state: { user: UserType }) => state.user);
 
-  // const [errorMsg, setErrorMsg] = useState<string>("");
-  // const [error, setError] = useState<boolean>(false);
-
   useEffect(() => {
     dispatch(asyncGetAnimals());
   }, []);
@@ -50,7 +47,7 @@ export default function CardsView() {
 
   async function buyCard() {
     if (animal.error) {
-      //Erro de PI comprar carta
+      //Erro de API comprar carta
       toast("Não foi possivel", {
         position: "top-right",
         autoClose: 2000,
@@ -62,10 +59,12 @@ export default function CardsView() {
         theme: "dark",
       });
     } else {
+      //Compra a carta se houver menos de 8 no total
       if (animal.animals?.length < 8) {
         dispatch(asyncGetAnimal());
         window.scrollTo(0, document.body.scrollHeight);
       } else {
+        //Informa erro no caso de ja haver 8 cartas
         toast("Voce só pode ter 8 cartas", {
           position: "top-right",
           autoClose: 1500,
@@ -83,7 +82,6 @@ export default function CardsView() {
   return (
     <Container ref={ref}>
       <ToastContainer />
-      {/* <Alert visible={error} text={errorMsg} /> */}
       <ButtonsContainer>
         <Button onClick={() => dispatch(shuffleAnimals())} secondary>
           Embaralhar

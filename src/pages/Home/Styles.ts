@@ -42,7 +42,6 @@ export const Input = styled.input<{ error: boolean }>`
   }
 
   :focus {
-    /* background: #f0ff; */
     outline: 1px solid #ddd;
   }
   ::placeholder {
