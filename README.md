@@ -20,7 +20,7 @@ Caso isso n aconteça, abra [http://localhost:3000](http://localhost:3000) em se
 Gera uma versão otimizada para produção do aplicativo na pasta `build` .\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-##CI e CD
+## CI e CD
 
 A entrega continua ja está configurada e as alterações aprovadas são aplicadas automaticamente em [Card Challenge App](https://card-challenge-umber.vercel.app)
 
