@@ -8,12 +8,8 @@ export async function getRandomAnimal() {
   return response.data;
 }
 
-export async function getMultipleRandomAnimais(
-  quantity: number
-) {
-  const response = await axios.get(
-    `${BASE_URL}/animals/rand/${quantity}`
-  );
+export async function getMultipleRandomAnimais(quantity: number) {
+  const response = await axios.get(`${BASE_URL}/animals/rand/${quantity}`);
 
   return response.data;
 }
