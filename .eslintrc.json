@@ -1,0 +1,27 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2020,
+      "sourceType": "module"
+    },
+    "extends": ["plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "rules": {
+      "no-console": 1,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/explicit-module-boundary-types": 0,
+      "@typescript-eslint/no-non-null-assertion": 0,
+      "@typescript-eslint/ban-types": 0,
+      "react/prop-types": 0,
+      "react/no-unescaped-entities": 0,
+      "react/react-in-jsx-scope": 0,
+      "react/no-unknown-property": 0
+    }
+  }
