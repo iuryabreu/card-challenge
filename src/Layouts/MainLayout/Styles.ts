@@ -5,11 +5,12 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const Logo = styled.img`
   width: auto;
-  height: 50px;
+  height: 40px;
 `;
 
 export const Header = styled.header`
@@ -24,6 +25,10 @@ export const Header = styled.header`
 `;
 
 export const Content = styled.div`
-  width: 80%;
-  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
