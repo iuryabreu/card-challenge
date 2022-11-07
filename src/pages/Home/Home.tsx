@@ -29,6 +29,7 @@ export default function Home() {
       <Form>
         <Input
           type="text"
+          maxLength={12}
           placeholder="Insira seu nome"
           value={userName}
           onChange={(e) => {
@@ -37,6 +38,7 @@ export default function Home() {
             setError(false);
           }}
           error={error}
+          
         />
         <ErrorMsg>{errorMsg}</ErrorMsg>
         <Button single onClick={(e: MouseEvent) => handleLogin(e)}>Ver Cartas</Button>
